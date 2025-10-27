@@ -3,8 +3,6 @@ package models
 import (
 	"time"
 
-	"{{.ModulePath}}/internal/utils"
-
 	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
 )
