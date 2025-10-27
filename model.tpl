@@ -20,7 +20,7 @@ type {{.ModelName}} struct {
 }
 
 // HiddenFields specifies fields to omit in JSON responses
-var HiddenFields = []string{
+var HiddenFieldsOf{{.ModelName}} = []string{
 	"deleted_at",
 }
 
@@ -53,7 +53,7 @@ func (m *{{.ModelName}}) BeforeUpdate(tx *gorm.DB) (err error) {
 // CRUD Operations
 func (m *{{.ModelName}}) FindAll(db *gorm.DB, where map[string]interface{}) ([]{{.ModelName}}, error) {
 	var records []{{.ModelName}}
-	err := db.Select("*").Omit(HiddenFields...).Where(where).Find(&records).Error
+	err := db.Select("*").Omit(HiddenFieldsOf{{.ModelName}}...).Where(where).Find(&records).Error
 	return records, err
 }
 
